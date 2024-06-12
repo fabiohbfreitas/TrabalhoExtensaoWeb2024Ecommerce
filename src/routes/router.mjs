@@ -2,12 +2,13 @@ import { Router } from "express"
 import { randomUUID } from "node:crypto"
 import { userIsAuthenticatedMiddleware } from "../middleware/userIsAuthenticated.mjs";
 import { userIsAdmin } from "../middleware/userIsAdmin.mjs";
+import { userIsNOTAuthenticated } from "../middleware/userIsNOTAuthenticated.mjs";
 
 export const router = Router();
 
 router.get("/", (_, res) => res.render("index.html"));
-router.get("/auth/login", (_, res) => res.render("login.html"));
-router.get("/auth/register", (_, res) => res.render("register.html"))
+router.get("/auth/login", userIsNOTAuthenticated, (_, res) => res.render("login.html"));
+router.get("/auth/register", userIsNOTAuthenticated, (_, res) => res.render("register.html"))
 
 const users = [];
 
@@ -26,7 +27,7 @@ router.post("/auth/register", (req, res) => {
     return res.redirect("/auth/login");
 });
 
-router.post("/auth/login", (req, res) => {
+router.post("/auth/login", userIsNOTAuthenticated, (req, res) => {
     const { email, password } = req.body;
     // TODO: validate format
     const user = users.find(u => u.email === email);
