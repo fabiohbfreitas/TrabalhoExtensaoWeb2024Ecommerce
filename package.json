@@ -1,0 +1,19 @@
+{
+  "name": "trabalhoextensaoweb2024ecommerce",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": "true",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch-path=src src/server.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "4.18",
+    "express-session": "1.18.0",
+    "mustache-express": "1.3"
+  }
+}
