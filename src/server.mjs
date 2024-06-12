@@ -12,6 +12,7 @@ app.use(session({
     cookie: { secure: process.env.ENVIRONMENT === 'production' }
 }))
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(resolvePath(import.meta.dirname, "public")))
 app.engine("html", mustacheExpress());
 app.set("view engine", "html");
 app.set("views", resolvePath(import.meta.dirname, "views"));
