@@ -10,6 +10,16 @@
 </head>
 
 <body>
+    {{#user}}
+    <p>Bem vindo!</p>
+    <a href="/auth/logout">Logout</a>
+    <pre>
+            <code>
+                {{user}}
+            </code>
+        </pre>
+    {{/user}}
+    {{^user}}
     <ul>
         <li>
             <a href="/auth/register">Registrar</a>
@@ -18,6 +28,7 @@
             <a href="/auth/login">Login</a>
         </li>
     </ul>
+    {{/user}}
 </body>
 
 </html>
