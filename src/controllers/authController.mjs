@@ -1,10 +1,9 @@
-import { createUser, findUserByEmail, findUserById } from "../repositories/userRepository.mjs";
+import { createUser, findUserByEmail } from "../repositories/userRepository.mjs";
 
 export function login(req, res) {
     const { email, password } = req.body;
     // TODO: validate format
     const user = findUserByEmail(email);
-    console.log(user);
     if (!user) {
         console.log("failed to find user")
         return res.redirect("/auth/register");
