@@ -20,7 +20,7 @@ console.log(resolvePath(import.meta.dirname, "views", "partials"));
 app.engine(
     "html",
     mustacheExpress(
-        resolvePath(import.meta.dirname, "view", "partials"),
+        resolvePath(import.meta.dirname, "views", "partials"),
         ".html",
     ),
 );
