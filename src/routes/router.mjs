@@ -14,3 +14,4 @@ router.post("/auth/register", AuthController.register);
 router.post("/auth/login", userIsNOTAuthenticated, AuthController.login);
 router.get("/auth/logout", AuthController.logout);
 router.get("/admin", userIsAdmin, AdminController.adminView);
+router.get("/cart", (req, res) => res.render("cart.html"));
