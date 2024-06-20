@@ -1,18 +1,28 @@
 import { randomUUID } from "node:crypto"
+import { db } from "../lib/database.mjs"
 
-const users = [];
-
-
-export function findUserByEmail(email) {
-    return users.find(u => u.email === email);
+export function findUserByEmail(searchEmail) {
+    let userByEmail = db.prepare("select * from user where email = ? limit 1;")
+    let user = userByEmail.get(searchEmail)
+    if (user) {
+        user.isAdmin = user.isAdmin == "true"
+    }
+    return user
 }
 
 export function findUserById(id) {
-    return users.find(u => u.id === id);
+    let userById = db.prepare("select * from user where id = ? limit 1;")
+    return userById.get(id)
 }
 
 export function createUser(name, email, password) {
-    const newUser = { id: randomUUID(), name, email, password, isAdmin: users.length === 0 };
-    console.log(newUser);
-    users.push(newUser);
+    let userCount = db.prepare("select count(*) from user;");
+    let { 'count(*)': count } = userCount.get();
+
+    let insert = db.prepare(`
+        insert into user values (
+            ?, ? ,?, ?, ?
+        );
+    `);
+    insert.run(randomUUID(), name, email, password, count == 0 ? 'true' : 'false');
 }
