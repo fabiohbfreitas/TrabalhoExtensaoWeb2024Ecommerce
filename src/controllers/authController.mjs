@@ -7,7 +7,7 @@ export function login(req, res) {
     const user = findUserByEmail(email);
     if (!user) {
         console.log("failed to find user")
-        return res.redirect("/auth/register");
+        return res.redirect("/auth/sign-up");
     }
     if (!comparePassword(password, user.password)) {
         // TODO: show error

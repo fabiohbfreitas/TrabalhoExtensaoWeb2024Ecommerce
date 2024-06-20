@@ -20,23 +20,23 @@
         <img src="../image/auth-image.png" alt="" class="auth_image" />
       </div>
       <div class="auth_content">
-        <form action="" class="auth_form">
+        <form action="/auth/login" method="post">
           <h2 class="form_title">Login to your account</h2>
           <p class="auth_p">Enter your details below</p>
           <div class="form_group">
-            <input type="email" placeholder="Email" class="form_input" />
+            <input type="email" name="email" id="email" placeholder="Email" class="form_input" />
           </div>
           <div class="form_group form_pass">
-            <input type="password" placeholder="Password" class="form_input" />
+            <input type="password" name="password" id="password" placeholder="Password" class="form_input" />
           </div>
           <div class="form_group">
             <button class="form_btn">
-              <a href="#" class="form_link">Login</a>
+              Login
             </button>
           </div>
           <div class="form_group">
             <span>Don't have an account?
-              <a href="./sign-up.html" class="form_auth_link">Reegister</a></span>
+              <a href="/auth/sign-up" class="form_auth_link">Register</a></span>
           </div>
         </form>
       </div>
