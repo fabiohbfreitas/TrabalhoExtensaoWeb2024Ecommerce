@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/scrollreveal"></script>
-    <!-- Link Swiper's CSS -->
+   
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
@@ -30,7 +30,7 @@
           <li class="nav_item"><a href="#" class="nav_link">About</a></li>
           <li class="nav_item"><a href="#" class="nav_link">Contact</a></li>
           <li class="nav_item">
-            <a href="/auth/login" class="nav_link">Sign up</a>
+            <a href="./sign-up.html" class="nav_link">Sign up</a>
           </li>
         </ul>
         <div class="nav_items">
@@ -89,8 +89,11 @@
         </div>
         <div class="auth_content">
           <form action="" class="auth_form">
-            <h2 class="form_title">Login to your account</h2>
+            <h2 class="form_title">Create your account</h2>
             <p class="auth_p">Enter your details below</p>
+            <div class="form_group">
+              <input type="text" placeholder="Name" class="form_input" />
+            </div>
             <div class="form_group">
               <input type="email" placeholder="Email" class="form_input" />
             </div>
@@ -102,15 +105,13 @@
             </div>
             <div class="form_group">
               <button class="form_btn">
-                <a href="#" class="form_link">Login</a>
+                <a href="#" class="form_link">Create Account</a>
               </button>
             </div>
             <div class="form_group">
               <span
-                >Don't have an account?
-                <a href="./sign-up.html" class="form_auth_link"
-                  >Reegister</a
-                ></span
+                >Already have an account?
+                <a href="./login.html" class="form_auth_link">Login</a></span
               >
             </div>
           </form>

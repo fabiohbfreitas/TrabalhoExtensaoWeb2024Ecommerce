@@ -9,8 +9,8 @@ export const router = Router();
 
 router.get("/", ProductsController.productsView);
 router.get("/auth/login", userIsNOTAuthenticated, (_, res) => res.render("login.html"));
-router.get("/auth/register", userIsNOTAuthenticated, (_, res) => res.render("register.html"))
-router.post("/auth/register", AuthController.register);
+router.get("/auth/sign-up", userIsNOTAuthenticated, (_, res) => res.render("sign-up.html"))
+router.post("/auth/sign-up", AuthController.register);
 router.post("/auth/login", userIsNOTAuthenticated, AuthController.login);
 router.get("/auth/logout", AuthController.logout);
 router.get("/admin", userIsAdmin, AdminController.adminView);
