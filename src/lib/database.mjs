@@ -62,7 +62,7 @@ try {
         subtotal integer not null, 
 
         foreign key (orderId)
-            references checkoutOrder (id)
+            references checkout_order (id)
             on delete cascade
             on update cascade
         
