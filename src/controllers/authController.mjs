@@ -1,3 +1,4 @@
+import { comparePassword, hashPassword } from "../lib/passwords.mjs";
 import { createUser, findUserByEmail } from "../repositories/userRepository.mjs";
 
 export function login(req, res) {
@@ -8,9 +9,8 @@ export function login(req, res) {
         console.log("failed to find user")
         return res.redirect("/auth/register");
     }
-    if (!(user.password === password)) {
+    if (!comparePassword(password, user.password)) {
         // TODO: show error
-        console.log(user.password, password);
         console.log("wrong pass")
         return res.redirect("/auth/login");
     }
@@ -25,13 +25,14 @@ export function login(req, res) {
 }
 
 export function register(req, res) {
-    const { name, email, password } = req.body;
+    const { name, email, password: rawPassword } = req.body;
     // TODO: validate format
     const user = findUserByEmail(email);
     if (user) {
         // TODO: Show error
         return res.redirect("/auth/register");
     }
+    const password = hashPassword(rawPassword);
     createUser(name, email, password);
     return res.redirect("/auth/login");
 }
