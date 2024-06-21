@@ -26,7 +26,6 @@ export function deleteProduct(req, res) {
 		return res.redirect("/");
 	}
 	deleteProductById(id);
-	console.log("deleted product");
 	return res.redirect("/");
 }
 
@@ -49,18 +48,25 @@ export function updateProductView(req, res) {
 
 export function updateProduct(req, res) {
 	const { id } = req.params;
-	const { title, description, quantity, price, category } = req.body;
+	const { title, description, quantity, price, category, image } = req.body;
 	if (!id) {
 		return res.redirect("/");
 	}
-	const product = getProduct(id);
-	updateProductInfo(title, description, quantity, price, Number(category), id);
+	updateProductInfo(
+		title,
+		description,
+		image,
+		quantity,
+		price,
+		Number(category),
+		id,
+	);
 	return res.redirect("/");
 }
 
 export function adminCreateProduct(req, res) {
-	const { title, description, quantity, price, category } = req.body;
-	createProduct(title, description, quantity, price, Number(category));
+	const { title, description, quantity, price, category, image } = req.body;
+	createProduct(title, description, image, quantity, price, Number(category));
 	return res.redirect("/");
 }
 

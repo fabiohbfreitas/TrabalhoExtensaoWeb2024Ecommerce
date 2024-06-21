@@ -24,6 +24,7 @@ try {
         id text primary key,
         title text not null,
         description text not null,
+		image text not null,
         quantity integer not null,
         price integer not null,
         categoryId integer not null,

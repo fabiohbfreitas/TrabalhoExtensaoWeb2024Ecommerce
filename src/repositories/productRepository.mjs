@@ -21,18 +21,26 @@ export function getProduct(id) {
 	return product;
 }
 
-export function createProduct(title, description, quantity, price, categoryId) {
+export function createProduct(
+	title,
+	description,
+	image,
+	quantity,
+	price,
+	categoryId,
+) {
 	let insertProduct = db
 		.prepare(`
-        insert into product values (?, ?, ?, ?, ?, ?);
+        insert into product values (?, ?, ?, ?, ?, ?, ?);
     `)
-		.run(randomUUID(), title, description, quantity, price, categoryId);
+		.run(randomUUID(), title, description, image, quantity, price, categoryId);
 	console.log(insertProduct);
 }
 
 export function updateProductInfo(
 	title,
 	description,
+	image,
 	quantity,
 	price,
 	categoryId,
@@ -43,13 +51,14 @@ export function updateProductInfo(
         update product
             set title = ?,
                 description = ?,
+				image = ?,
                 quantity = ?,
                 price = ?,
 				categoryId = ?
         where
             id == ?;
     `)
-		.run(title, description, quantity, price, categoryId, id);
+		.run(title, description, image, quantity, price, categoryId, id);
 	console.log(updateProduct);
 }
 
