@@ -1,11 +1,11 @@
-import Database from 'better-sqlite3';
-import { createCategory } from '../repositories/categoryRepository.mjs';
-import { createProduct } from '../repositories/productRepository.mjs';
+import Database from "better-sqlite3";
+import { createCategory } from "../repositories/categoryRepository.mjs";
+import { createProduct } from "../repositories/productRepository.mjs";
 
-export const db = new Database('foobar.db');
+export const db = new Database("foobar.db");
 
 try {
-    db.exec(`
+	db.exec(`
     create table if not exists user (
         id text primary key,
         name text not null,
@@ -73,93 +73,91 @@ try {
             on delete cascade
             on update cascade
     );
-    `)
+    `);
 
-    // let catInsert = db.prepare(`
-    //     insert into category (category) values (?);
-    // `)
-    // console.log(catInsert.run("Categoria2"))
+	// let catInsert = db.prepare(`
+	//     insert into category (category) values (?);
+	// `)
+	// console.log(catInsert.run("Categoria2"))
 
-    // let deleteCategory = db.prepare(`
-    // delete from category
-    // where
-    //     id == ?
-    // `).run(2);
-    // console.log(deleteCategory);
+	// let deleteCategory = db.prepare(`
+	// delete from category
+	// where
+	//     id == ?
+	// `).run(2);
+	// console.log(deleteCategory);
 
-    // let updateCategory = db.prepare(`
-    //     update category
-    //         set category = ?
-    //     where
-    //         id == ?
-    // `).run("UPDATED", 1);
-    // console.log(updateCategory);
+	// let updateCategory = db.prepare(`
+	//     update category
+	//         set category = ?
+	//     where
+	//         id == ?
+	// `).run("UPDATED", 1);
+	// console.log(updateCategory);
 
+	// let insert = db.prepare(`
+	//     insert into user values (
+	//         ?, ? ,?, ?, ?
+	//     );
+	// `);
+	// insert.run("someuserid60", "nome", "email@mail.com", "password!", "true")
 
-    // let insert = db.prepare(`
-    //     insert into user values (
-    //         ?, ? ,?, ?, ?
-    //     );
-    // `);
-    // insert.run("someuserid60", "nome", "email@mail.com", "password!", "true")
+	// let userCount = db.prepare("select count(*) from user;");
+	// let { 'count(*)': count } = userCount.get();
+	// console.log(count);
 
-    // let userCount = db.prepare("select count(*) from user;");
-    // let { 'count(*)': count } = userCount.get();
-    // console.log(count);
+	// let userByEmail = db.prepare("select * from user where email = ? limit 1;")
+	// console.log(userByEmail.get("email@maiil.com"))
+	// db.exec("delete from user;")
+	// let res = db.prepare("SELECT * from category limit 100;").all()
+	// console.log(res);
+	// db.prepare(`
+	//     insert into category (category) values (?);
+	// `).run("cat1")
+	// let insertProduct = db.prepare(`
+	//     insert into product values (?, ?, ?, ?, ?, ?);
+	// `).run("asdf", "title", "description", 10, 69, 3);
+	// console.log(insertProduct);
 
-    // let userByEmail = db.prepare("select * from user where email = ? limit 1;")
-    // console.log(userByEmail.get("email@maiil.com"))
-    // db.exec("delete from user;")
-    // let res = db.prepare("SELECT * from category limit 100;").all()
-    // console.log(res);
-    // db.prepare(`
-    //     insert into category (category) values (?);
-    // `).run("cat1")
-    // let insertProduct = db.prepare(`
-    //     insert into product values (?, ?, ?, ?, ?, ?);
-    // `).run("asdf", "title", "description", 10, 69, 3);
-    // console.log(insertProduct);
+	// let deleteProduct = db.prepare("delete from product where id == ?;").run("randomid453")
+	// console.log(deleteProduct);
 
-    // let deleteProduct = db.prepare("delete from product where id == ?;").run("randomid453")
-    // console.log(deleteProduct);
+	// let approveOrder  = db.prepare(`
+	//     update checkout_order
+	//         set approved = ?
+	//     where
+	//         id == ?
+	// `).run(true, id)
+	// let updateProduct = db.prepare(`
+	//     update product
+	//         set title = ?,
+	//             description = ?,
+	//             quantity = ?,
+	//             price = ?
+	//     where
+	//         id == ?;
+	// `).run("updated title", "updated desc", 99, 420, "asdf");
+	// console.log(updateProduct);
 
-    // let approveOrder  = db.prepare(`
-    //     update checkout_order
-    //         set approved = ?
-    //     where
-    //         id == ?
-    // `).run(true, id)
-    // let updateProduct = db.prepare(`
-    //     update product
-    //         set title = ?,
-    //             description = ?,
-    //             quantity = ?,
-    //             price = ?
-    //     where
-    //         id == ?;
-    // `).run("updated title", "updated desc", 99, 420, "asdf");
-    // console.log(updateProduct);
+	// console.log(db.prepare(`
+	//     insert into review (productID, review) values (?, ?);
+	// `).run("asdf", "muito pica"));
 
-    // console.log(db.prepare(`
-    //     insert into review (productID, review) values (?, ?);
-    // `).run("asdf", "muito pica"));
+	// let insertReview = db.prepare(`
+	//     delete from review where id = ?;
+	// `).run(1);
+	// console.log(insertReview);
 
-    // let insertReview = db.prepare(`
-    //     delete from review where id = ?;
-    // `).run(1);
-    // console.log(insertReview);
+	// console.log(db.prepare("select * from review where productId = ? limit 100;").all("asdf"))
 
-    // console.log(db.prepare("select * from review where productId = ? limit 100;").all("asdf"))
-
-    // createProduct("Prod 1", "Desc 1", 99, 69, 1);
-    // createProduct("Prod 2", "Desc 2", 99, 69, 2);
-    // createProduct("Prod 3", "Desc 3", 99, 69, 3);
-    // createProduct("Prod 4", "Desc 4", 99, 69, 4);
-    // createProduct("Prod 5", "Desc 5", 99, 69, 1);
-    // createProduct("Prod 6", "Desc 6", 99, 69, 2);
-    // createProduct("Prod 7", "Desc 7", 99, 69, 3);
-    // createProduct("Prod 8", "Desc 8", 99, 69, 4);
-
+	// createProduct("Prod 1", "Desc 1", 99, 69, 1);
+	// createProduct("Prod 2", "Desc 2", 99, 69, 2);
+	// createProduct("Prod 3", "Desc 3", 99, 69, 3);
+	// createProduct("Prod 4", "Desc 4", 99, 69, 4);
+	// createProduct("Prod 5", "Desc 5", 99, 69, 1);
+	// createProduct("Prod 6", "Desc 6", 99, 69, 2);
+	// createProduct("Prod 7", "Desc 7", 99, 69, 3);
+	// createProduct("Prod 8", "Desc 8", 99, 69, 4);
 } catch (error) {
-    console.error(error.message)
+	console.error(error.message);
 }

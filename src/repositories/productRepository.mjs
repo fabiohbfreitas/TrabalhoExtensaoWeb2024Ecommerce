@@ -2,24 +2,29 @@ import { randomUUID } from "node:crypto";
 import { db } from "../lib/database.mjs";
 
 export function listProducts() {
-    let products = db.prepare("select * from product limit 100;").all();
-    return products
+	let products = db.prepare("select * from product limit 100;").all();
+	return products;
 }
 
 export function getProduct(id) {
-    let product = db.prepare("select * from product where id = ? limit 1;").get(id)
-    return product;
+	let product = db
+		.prepare("select * from product where id = ? limit 1;")
+		.get(id);
+	return product;
 }
 
 export function createProduct(title, description, quantity, price, categoryId) {
-    let insertProduct = db.prepare(`
+	let insertProduct = db
+		.prepare(`
         insert into product values (?, ?, ?, ?, ?, ?);
-    `).run(randomUUID(), title, description, quantity, price, categoryId);
-    console.log(insertProduct);
+    `)
+		.run(randomUUID(), title, description, quantity, price, categoryId);
+	console.log(insertProduct);
 }
 
 export function updateProductInfo(title, description, quantity, price, id) {
-    let updateProduct = db.prepare(`
+	let updateProduct = db
+		.prepare(`
         update product
             set title = ?,
                 description = ?,
@@ -27,11 +32,12 @@ export function updateProductInfo(title, description, quantity, price, id) {
                 price = ?
         where
             id == ?;
-    `).run(title, description, quantity, price, id);
-    console.log(updateProduct);
+    `)
+		.run(title, description, quantity, price, id);
+	console.log(updateProduct);
 }
 
 export function deleteProductById(id) {
-    let deleteProduct = db.prepare("delete from product where id == ?;").run(id);
-    console.log(deleteProduct);
+	let deleteProduct = db.prepare("delete from product where id == ?;").run(id);
+	console.log(deleteProduct);
 }
