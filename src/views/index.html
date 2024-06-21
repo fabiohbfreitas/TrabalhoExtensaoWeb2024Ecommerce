@@ -18,7 +18,9 @@
     <div class="container header_container">
       <div class="header_filter">
         {{#categories}}
-        <p class="header_filter_link">{{category}}</p>
+        <a href="/category/{{id}}">
+          <p class="header_filter_link">{{category}}</p>
+        </a>
         {{#admin}}
         <form method="post" action="/category/delete/{{id}}">
           <button>
@@ -33,10 +35,8 @@
 
   </header>
 
-  <section class="section">
-  </section>
 
-  <section class="section">
+  <section class="section" id="products">
     <div class="container">
       <div class="section_category">
         <p class="section_category_p">Products</p>

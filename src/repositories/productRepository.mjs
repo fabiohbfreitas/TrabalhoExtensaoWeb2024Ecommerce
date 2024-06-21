@@ -6,6 +6,12 @@ export function listProducts() {
 	return products;
 }
 
+export function listProductsForCategory(categoryId) {
+	let products = db.prepare("select * from product where categoryId = ? limit 100;").all(categoryId);
+	console.log(products);
+	return products;
+}
+
 export function getProduct(id) {
 	let product = db
 		.prepare("select * from product where id = ? limit 1;")

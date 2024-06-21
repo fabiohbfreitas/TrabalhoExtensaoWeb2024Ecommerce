@@ -11,6 +11,7 @@ import { userIsAuthenticatedMiddleware } from "../middlewares/userIsAuthenticate
 export const router = Router();
 
 router.get("/", ProductsController.productsView);
+router.get("/category/:id", ProductsController.productsByCategory);
 router.post(
 	"/product/delete/:id",
 	userIsAdmin,

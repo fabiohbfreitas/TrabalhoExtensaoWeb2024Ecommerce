@@ -5,6 +5,11 @@ export function listCategories() {
 	return res;
 }
 
+export function findCategory(id) {
+	let find = db.prepare("SELECT * from category where id = ?;").get(id);
+	return find;
+}
+
 export function createCategory(categoryName) {
 	let insertCategory = db.prepare(`
         insert into category (category) values (?);

@@ -1,9 +1,10 @@
-import { listCategories } from "../repositories/categoryRepository.mjs";
+import { findCategory, listCategories } from "../repositories/categoryRepository.mjs";
 import {
 	createProduct,
 	deleteProductById,
 	getProduct,
 	listProducts,
+	listProductsForCategory,
 	updateProductInfo,
 } from "../repositories/productRepository.mjs";
 import { findUserById } from "../repositories/userRepository.mjs";
@@ -53,4 +54,17 @@ export function adminCreateProduct(req, res) {
 	const { title, description, quantity, price } = req.body;
 	createProduct(title, description, quantity, price, 1);
 	return res.redirect("/");
+}
+
+export function productsByCategory(req, res) {
+	const { id: categoryID } = req.params;
+
+	const { info, admin } = req.session;
+	const user = findUserById(info);
+
+	let products = listProductsForCategory(categoryID);
+	let category = findCategory(categoryID);
+	console.log(category);
+
+	return res.render("categoryProduct.html", { user, admin, products, category })
 }
