@@ -15,17 +15,16 @@
     {{> nav}}
     <div style="min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
         <div class="auth_content">
-            <form method="post">
+            <form action="/profile" method="post">
                 <h2 class="form_title">Your Profile</h2>
                 <p class="auth_p">Update your details</p>
                 <div class="form_group">
-                    <input type="text" name="name" id="name" placeholder="Name" class="form_input" />
+                    <input type="text" name="name" id="name" placeholder="Name" class="form_input"
+                        value="{{user.name}}" />
                 </div>
                 <div class="form_group">
-                    <input type="email" name="email" id="email" placeholder="Email" class="form_input" />
-                </div>
-                <div class="form_group form_pass">
-                    <input type="password" name="password" id="password" placeholder="Password" class="form_input" />
+                    <input type="email" name="email" id="email" placeholder="Email" class="form_input"
+                        value="{{user.email}}" />
                 </div>
                 <div class="form_group">
                     <button class="form_btn">
@@ -35,7 +34,7 @@
             </form>
         </div>
         <div class="auth_content">
-            <form method="post">
+            <form action="/profile/delete" method="post">
                 <h2 class="form_title">Delete your account</h2>
                 <div class="form_group">
                     <button class="form_btn">

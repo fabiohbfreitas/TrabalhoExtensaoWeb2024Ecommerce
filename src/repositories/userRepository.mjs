@@ -26,3 +26,19 @@ export function createUser(name, email, password) {
     `);
     insert.run(randomUUID(), name, email, password, count == 0 ? 'true' : 'false');
 }
+
+export function updateUser(name, email, id) {
+    let updateProduct = db.prepare(`
+        update user
+            set name = ?,
+                email = ?
+        where
+            id == ?;
+    `).run(name, email, id);
+    console.log(updateProduct);
+}
+
+export function deleteUser(id) {
+    let deleteUser = db.prepare("delete from user where id == ?;").run(id);
+    console.log(deleteUser);
+}

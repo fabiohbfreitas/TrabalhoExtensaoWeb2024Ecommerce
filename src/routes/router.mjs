@@ -4,6 +4,7 @@ import { userIsNOTAuthenticated } from "../middlewares/userIsNOTAuthenticated.mj
 import * as AuthController from "../controllers/authController.mjs"
 import * as AdminController from "../controllers/adminController.mjs";
 import * as ProductsController from "../controllers/productsController.mjs"
+import * as ProfileController from "../controllers/profileController.mjs"
 import { userIsAuthenticatedMiddleware } from "../middlewares/userIsAuthenticated.mjs";
 
 export const router = Router();
@@ -11,7 +12,10 @@ export const router = Router();
 router.get("/", ProductsController.productsView);
 router.get("/auth/sign-up", userIsNOTAuthenticated, (_, res) => res.render("sign-up.html"))
 router.get("/auth/login", userIsNOTAuthenticated, (_, res) => res.render("login.html"))
-router.get("/profile", userIsAuthenticatedMiddleware, (_, res) => res.render("profile.html"))
+
+router.get("/profile", userIsAuthenticatedMiddleware, ProfileController.profileView)
+router.post("/profile", userIsAuthenticatedMiddleware, ProfileController.updateProfile)
+router.post("/profile/delete", userIsAuthenticatedMiddleware, ProfileController.deleteProfile)
 
 router.post("/auth/register", userIsNOTAuthenticated, AuthController.register);
 router.post("/auth/login", userIsNOTAuthenticated, AuthController.login);

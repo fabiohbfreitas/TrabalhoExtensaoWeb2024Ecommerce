@@ -15,8 +15,48 @@
     {{> nav}}
     <div style="min-height: 80vh;">
         <h1>ADMIN</h1>
-        <p>Admin ok.</p>
-        <!-- <p>{{user}}</p> -->
+        <div
+            style="min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+
+            <div class="auth_content">
+                <h2 class="form_title">Add new Category</h2>
+                <p class="auth_p">Make new categories available</p>
+                <div class="form_group">
+                    <input type="text" name="name" id="name" placeholder="name" class="form_input" />
+                </div>
+
+                <div class="form_group">
+                    <button class="form_btn">
+                        Add Category
+                    </button>
+                </div>
+                </form>
+            </div>
+
+            <div class="auth_content">
+                <h2 class="form_title">Add new Product</h2>
+                <p class="auth_p">Make new products available</p>
+                <div class="form_group">
+                    <input type="text" name="title" id="title" placeholder="Title" class="form_input" />
+                </div>
+                <div class="form_group">
+                    <input type="text" name="description" id="description" placeholder="Description"
+                        class="form_input" />
+                </div>
+                <div class="form_group form_pass">
+                    <input type="number" name="quantity" id="quantity" placeholder="Quantity" class="form_input" />
+                </div>
+                <div class="form_group form_pass">
+                    <input type="number" name="price" id="price" placeholder="Price" class="form_input" />
+                </div>
+                <div class="form_group">
+                    <button class="form_btn">
+                        Add Product
+                    </button>
+                </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     {{>footer}}
