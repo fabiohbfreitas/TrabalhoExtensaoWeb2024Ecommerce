@@ -1,4 +1,7 @@
-import { findCategory, listCategories } from "../repositories/categoryRepository.mjs";
+import {
+	findCategory,
+	listCategories,
+} from "../repositories/categoryRepository.mjs";
 import {
 	createProduct,
 	deleteProductById,
@@ -36,9 +39,9 @@ export function updateProductView(req, res) {
 	}
 	const product = getProduct(id);
 	const allCategories = listCategories();
-	const categories = allCategories.map(category => ({
+	const categories = allCategories.map((category) => ({
 		...category,
-		isCurrentCategory: category.id === product.categoryId
+		isCurrentCategory: category.id === product.categoryId,
 	}));
 
 	return res.render("editProduct.html", { user, admin, product, categories });
@@ -71,5 +74,10 @@ export function productsByCategory(req, res) {
 	let category = findCategory(categoryID);
 	console.log(category);
 
-	return res.render("categoryProduct.html", { user, admin, products, category })
+	return res.render("categoryProduct.html", {
+		user,
+		admin,
+		products,
+		category,
+	});
 }

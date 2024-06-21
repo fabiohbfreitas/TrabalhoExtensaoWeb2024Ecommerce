@@ -7,7 +7,9 @@ export function listProducts() {
 }
 
 export function listProductsForCategory(categoryId) {
-	let products = db.prepare("select * from product where categoryId = ? limit 100;").all(categoryId);
+	let products = db
+		.prepare("select * from product where categoryId = ? limit 100;")
+		.all(categoryId);
 	console.log(products);
 	return products;
 }
@@ -28,7 +30,14 @@ export function createProduct(title, description, quantity, price, categoryId) {
 	console.log(insertProduct);
 }
 
-export function updateProductInfo(title, description, quantity, price, categoryId, id) {
+export function updateProductInfo(
+	title,
+	description,
+	quantity,
+	price,
+	categoryId,
+	id,
+) {
 	let updateProduct = db
 		.prepare(`
         update product
