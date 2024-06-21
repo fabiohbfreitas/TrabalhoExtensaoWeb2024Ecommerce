@@ -35,24 +35,29 @@ export function updateProductView(req, res) {
 		return res.redirect("/");
 	}
 	const product = getProduct(id);
+	const allCategories = listCategories();
+	const categories = allCategories.map(category => ({
+		...category,
+		isCurrentCategory: category.id === product.categoryId
+	}));
 
-	return res.render("editProduct.html", { user, admin, product });
+	return res.render("editProduct.html", { user, admin, product, categories });
 }
 
 export function updateProduct(req, res) {
 	const { id } = req.params;
-	const { title, description, quantity, price } = req.body;
+	const { title, description, quantity, price, category } = req.body;
 	if (!id) {
 		return res.redirect("/");
 	}
 	const product = getProduct(id);
-	updateProductInfo(title, description, quantity, price, id);
+	updateProductInfo(title, description, quantity, price, Number(category), id);
 	return res.redirect("/");
 }
 
 export function adminCreateProduct(req, res) {
-	const { title, description, quantity, price } = req.body;
-	createProduct(title, description, quantity, price, 1);
+	const { title, description, quantity, price, category } = req.body;
+	createProduct(title, description, quantity, price, Number(category));
 	return res.redirect("/");
 }
 

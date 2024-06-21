@@ -52,6 +52,16 @@
                         <input type="number" name="price" id="price" placeholder="Price" class="form_input"
                             value="{{price}}" />
                     </div>
+                    <div style="padding: 0 0 2rem 0;">
+                        <select id="category" name="category">
+                            {{#categories}}
+                            <option value="{{id}}" {{#isCurrentCategory}} selected {{/isCurrentCategory}}>
+                                {{category}}
+                            </option>
+                            {{/categories}}
+                        </select>
+                    </div>
+
                     <div class="form_group">
                         <button class="form_btn">
                             Update Product

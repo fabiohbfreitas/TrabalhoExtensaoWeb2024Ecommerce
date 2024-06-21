@@ -28,18 +28,19 @@ export function createProduct(title, description, quantity, price, categoryId) {
 	console.log(insertProduct);
 }
 
-export function updateProductInfo(title, description, quantity, price, id) {
+export function updateProductInfo(title, description, quantity, price, categoryId, id) {
 	let updateProduct = db
 		.prepare(`
         update product
             set title = ?,
                 description = ?,
                 quantity = ?,
-                price = ?
+                price = ?,
+				categoryId = ?
         where
             id == ?;
     `)
-		.run(title, description, quantity, price, id);
+		.run(title, description, quantity, price, categoryId, id);
 	console.log(updateProduct);
 }
 
