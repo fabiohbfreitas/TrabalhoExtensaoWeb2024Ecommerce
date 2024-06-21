@@ -11,7 +11,7 @@ export const router = Router();
 router.get("/", ProductsController.productsView);
 router.get("/auth/sign-up", userIsNOTAuthenticated, (_, res) => res.render("sign-up.html"))
 router.get("/auth/login", userIsNOTAuthenticated, (_, res) => res.render("login.html"))
-router.get("/cart", userIsAuthenticatedMiddleware, (_, res) => res.render("cart.html"))
+router.get("/profile", userIsAuthenticatedMiddleware, (_, res) => res.render("profile.html"))
 
 router.post("/auth/register", userIsNOTAuthenticated, AuthController.register);
 router.post("/auth/login", userIsNOTAuthenticated, AuthController.login);

@@ -4,21 +4,28 @@
         <ul class="nav_list">
             <li class="nav_item"><a href="/" class="nav_link">Home</a></li>
             <li class="nav_item"><a href="/" class="nav_link">Products</a></li>
-            {{#user}}
-            <p>{{user.name}}</p>
-            <li class="nav_item"><a href="/auth/logout" class="nav_link logout">Sign out</a></li>
-            {{/user}}
-            {{^user}}
-            <li class="nav_item"><a href="/auth/login" class="nav_link">Sign in</a></li>
-            <li class="nav_item">
-                <a href="/auth/sign-up" class="nav_link">Sign Up</a>
-            </li>
-            {{/user}}
+            {{#admin}}
+            <li class="nav_item"><a href="/admin" class="nav_link">Admin</a></li>
+            {{/admin}}
         </ul>
         <div class="nav_items">
-            <a href="/cart">
+            <!-- <a href="/cart">
                 <img src="../image/cart.png" alt="" class="nav_cart" />
-            </a>
+            </a> -->
+            <ul class="nav_list">
+                {{#user}}
+                <p>Welcome, {{user.name}}
+                </p>
+                <li class="nav_item"><a href="/profile" class="nav_link">Profile</a></li>
+                <li class="nav_item"><a href="/auth/logout" class="nav_link logout">Sign out</a></li>
+                {{/user}}
+                {{^user}}
+                <li class="nav_item"><a href="/auth/login" class="nav_link">Sign in</a></li>
+                <li class="nav_item">
+                    <a href="/auth/sign-up" class="nav_link">Sign Up</a>
+                </li>
+                {{/user}}
+            </ul>
         </div>
         <span class="hamburger">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
