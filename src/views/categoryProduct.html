@@ -22,11 +22,13 @@
                     delete all
                     its
                     products</p>
+                {{#category}}
                 <form style="flex: 1;" method="post" action="/category/delete/{{id}}">
                     <button style="padding: 0.5rem 0.25rem; width: 150px;" class="form_btn">
                         Delete Category
                     </button>
                 </form>
+                {{/category}}
             </div>
 
             {{/admin}}
@@ -40,7 +42,8 @@
         <div class="container">
             <div class="section_category">
                 <p class="section_category_p">Products for category:
-                    <strong>{{#category}}{{category}}{{/category}}</strong> </p>
+                    <strong>{{#category}}{{category}}{{/category}}</strong>
+                </p>
             </div>
             <div class="products">
 

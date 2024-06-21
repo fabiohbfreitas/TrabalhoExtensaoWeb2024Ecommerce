@@ -15,19 +15,14 @@
   {{> nav}}
   <header class="header">
 
-    <div class="container header_container">
-      <div class="header_filter">
+    <div style="margin-top: -0.25rem;" class="container header_container">
+      <div class="header_filter" style="display: flex; flex-direction: column; padding: 0.5rem;">
         {{#categories}}
         <a href="/category/{{id}}">
-          <p class="header_filter_link">{{category}}</p>
+          <p class="header_filter_link"
+            style="color: cornflowerblue; text-decoration: underline; padding: 0.5rem 0; gap: 1rem;">
+            {{category}}</p>
         </a>
-        {{#admin}}
-        <form method="post" action="/category/delete/{{id}}">
-          <button>
-            Delete Category
-          </button>
-        </form>
-        {{/admin}}
         {{/categories}}
       </div>
     </div>

@@ -72,7 +72,6 @@ export function productsByCategory(req, res) {
 
 	let products = listProductsForCategory(categoryID);
 	let category = findCategory(categoryID);
-	console.log(category);
 
 	return res.render("categoryProduct.html", {
 		user,
