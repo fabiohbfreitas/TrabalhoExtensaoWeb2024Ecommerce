@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import { db } from "../lib/database.mjs";
 
 export function listProducts() {
     let products = db.prepare("select * from product limit 100;").all();
@@ -17,7 +18,7 @@ export function createProduct(title, description, quantity, price, categoryId) {
     console.log(insertProduct);
 }
 
-export function updateProduct(title, description, quantity, price, id) {
+export function updateProductInfo(title, description, quantity, price, id) {
     let updateProduct = db.prepare(`
         update product
             set title = ?,
@@ -30,7 +31,7 @@ export function updateProduct(title, description, quantity, price, id) {
     console.log(updateProduct);
 }
 
-export function deleteProduct(id) {
+export function deleteProductById(id) {
     let deleteProduct = db.prepare("delete from product where id == ?;").run(id);
     console.log(deleteProduct);
 }

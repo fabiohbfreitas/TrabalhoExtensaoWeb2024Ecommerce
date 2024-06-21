@@ -25,7 +25,7 @@ export function updateCategory(id, name) {
 
 export function deleteCategory(id) {
     let deleteCategory = db.prepare(`
-    delete category
+    delete from category
     where
         id == ?
     `).run(id);

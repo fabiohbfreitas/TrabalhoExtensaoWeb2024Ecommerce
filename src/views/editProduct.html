@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <title>E-Commerce Website</title>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>E-Commerce Website</title>
+</head>
+
+<body>
+    {{> nav}}
+    <div style="min-height: 80vh;">
+
+        <div
+            style="min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+
+
+            {{#product}}
+            <div class="auth_content">
+                <form method="post">
+                    <h2 class="form_title">Editing: {{title}}</h2>
+                    <p class="auth_p">Update product</p>
+                    <div class="form_group">
+                        <input type="text" name="title" id="title" placeholder="Title" class="form_input"
+                            value="{{title}}" />
+                    </div>
+                    <div class="form_group">
+                        <input type="text" name="description" id="description" placeholder="Description"
+                            class="form_input" value="{{description}}" />
+                    </div>
+                    <div class="form_group form_pass">
+                        <input type="number" name="quantity" id="quantity" placeholder="Quantity" class="form_input"
+                            value="{{quantity}}" />
+                    </div>
+                    <div class="form_group form_pass">
+                        <input type="number" name="price" id="price" placeholder="Price" class="form_input"
+                            value="{{price}}" />
+                    </div>
+                    <div class="form_group">
+                        <button class="form_btn">
+                            Update Product
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="auth_content">
+                <h2 class="form_title">Delete {{title}}</h2>
+                <form method="post" action="/product/delete/{{id}}">
+                    <p class="auth_p">Delete permanently product.</p>
+                    <div class="form_group">
+                        <button class="form_btn">
+                            Delete Product
+                        </button>
+                    </div>
+                </form>
+            </div>
+            {{/product}}
+        </div>
+    </div>
+
+    {{>footer}}
+</body>
+
+</html>
+
+<body>
+    {{> nav}}
+    <div style="min-height: 80vh;">
+        {{#product}}
+        <div class="auth_content">
+            <h2 class="form_title">Editing Product: {{title}}</h2>
+            <p class="auth_p">Update product data</p>
+            <div class="form_group">
+                <input type="text" name="title" id="title" placeholder="Title" class="form_input" />
+            </div>
+            <div class="form_group">
+                <input type="text" name="description" id="description" placeholder="Description" class="form_input" />
+            </div>
+            <div class="form_group form_pass">
+                <input type="number" name="quantity" id="quantity" placeholder="Quantity" class="form_input" />
+            </div>
+            <div class="form_group form_pass">
+                <input type="number" name="price" id="price" placeholder="Price" class="form_input" />
+            </div>
+            <div class="form_group">
+                <button class="form_btn">
+                    Add Product
+                </button>
+            </div>
+            </form>
+        </div>
+        {{/product}}
+    </div>
+
+    {{>footer}}
+</body>
+
+</html>

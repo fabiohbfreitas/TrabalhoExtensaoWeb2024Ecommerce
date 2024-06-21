@@ -1,4 +1,6 @@
 import Database from 'better-sqlite3';
+import { createCategory } from '../repositories/categoryRepository.mjs';
+import { createProduct } from '../repositories/productRepository.mjs';
 
 export const db = new Database('foobar.db');
 
@@ -147,7 +149,16 @@ try {
     // `).run(1);
     // console.log(insertReview);
 
-    console.log(db.prepare("select * from review where productId = ? limit 100;").all("asdf"))
+    // console.log(db.prepare("select * from review where productId = ? limit 100;").all("asdf"))
+
+    // createProduct("Prod 1", "Desc 1", 99, 69, 1);
+    // createProduct("Prod 2", "Desc 2", 99, 69, 2);
+    // createProduct("Prod 3", "Desc 3", 99, 69, 3);
+    // createProduct("Prod 4", "Desc 4", 99, 69, 4);
+    // createProduct("Prod 5", "Desc 5", 99, 69, 1);
+    // createProduct("Prod 6", "Desc 6", 99, 69, 2);
+    // createProduct("Prod 7", "Desc 7", 99, 69, 3);
+    // createProduct("Prod 8", "Desc 8", 99, 69, 4);
 
 } catch (error) {
     console.error(error.message)
