@@ -33,7 +33,7 @@ export function register(req, res) {
 	const user = findUserByEmail(email);
 	if (user) {
 		// TODO: Show error
-		return res.redirect("/auth/register");
+		return res.redirect("/auth/sign-up");
 	}
 	const password = hashPassword(rawPassword);
 	createUser(name, email, password);

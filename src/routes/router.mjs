@@ -55,7 +55,7 @@ router.post(
 	ProfileController.deleteProfile,
 );
 
-router.post("/auth/register", userIsNOTAuthenticated, AuthController.register);
+router.post("/auth/sign-up", userIsNOTAuthenticated, AuthController.register);
 router.post("/auth/login", userIsNOTAuthenticated, AuthController.login);
 router.get("/auth/logout", AuthController.logout);
 
